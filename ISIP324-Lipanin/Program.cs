@@ -22,6 +22,27 @@ namespace ISIP324_Lipanin
                 Console.WriteLine("Введено неверное кол-во операций \nВведите от 2 до 40");
             }
 
+
+
+            string[] operation = new string [kolvo];
+            int[] prices = new int [kolvo];
+
+            for (int i = 0; i < kolvo; i++)
+            {
+                Console.WriteLine("Вводите данные в формате Операция;Цена");
+                string input = Console.ReadLine();
+
+                string[] parts = input.Split(';');
+
+                if (parts.Length != 2 || !int.TryParse(parts[1].Trim(), out prices[i]))
+                {
+                    Console.WriteLine("Неверный формат! Попробуйте снова");
+                    i--;
+                    continue;
+                }
+                operation[i] = parts[0].Trim();
+            }
+
         }
         static void function()
         {
